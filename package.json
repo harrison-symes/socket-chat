@@ -62,6 +62,7 @@
     "redux-mock-store": "^1.5.1",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^7.0.1",
+    "socket.io": "^2.1.1",
     "style-loader": "^0.21.0",
     "superagent": "^2.2.0",
     "webpack": "^2.3.3",
