@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 
 import {connectedUsers} from '../actions/gameInfo'
 import Lobby from './Lobby'
+import InRoom from './InRoom'
 
 class App extends React.Component {
   constructor(props) {

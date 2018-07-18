@@ -1,5 +1,3 @@
-
-
 export default function room (state = null, action) {
   switch(action.type) {
     case 'LEAVE_ROOM':

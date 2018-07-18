@@ -13,6 +13,7 @@ class CreateRoom extends React.Component {
   }
   submit(e) {
     e.preventDefault()
+    this.props.socket.emit('createRoom', this.state.room)
   }
   render() {
     const {room} = this.state
@@ -24,4 +25,5 @@ class CreateRoom extends React.Component {
   }
 }
 
-export default connect()(CreateRoom)
+const mapStateToProps = ({socket}) => ({socket})
+export default connect(mapStateToProps)(CreateRoom)
