@@ -10,29 +10,25 @@ module.exports = app => {
         console.log(`A user disconnected at ${new Date()}`);
       });
 
-
       socket.on('createRoom', room => {
-        console.log("create room", room);
-        socket.join(room.id)
-        io.emit('addRoom', room)
-        io.to(room.id).emit('joinRoom', room)
+        socket.join(room.id) //join a room
+        io.emit('addRoom', room) //add created room to all connected users
+        io.to(room.id).emit('joinRoom', room) //new user will join created room on client side
       })
 
       socket.on('joinRoom', room => {
-        socket.join(room.id)
-        io.to(room.id).emit('joinRoom', room)
+        socket.join(room.id) //socket joins existing room
+        io.to(room.id).emit('joinRoom', room) //tell client about the joined room
       })
 
       socket.on('vote', function (room, isYes) {
-        console.log({room, isYes});
-        io.to(room.id).emit('vote', isYes);
+        io.to(room.id).emit('vote', isYes)
+        //emit a vote to all sockets within the room
       });
 
-      socket.on('reset', function() {
-        io.emit('reset')
+      socket.on('reset', function(room) {
+        io.to(room.id).emit('reset') //reset vote settings for a room
       })
-    // console.log({io})
-    // console.log(socket);
 
   });
 

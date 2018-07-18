@@ -2,23 +2,19 @@ import React from 'react'
 import {HashRouter as Router, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 
-import {connectedUsers} from '../actions/gameInfo'
-import Lobby from './Lobby'
-import InRoom from './InRoom'
+import Lobby from './lobby/Lobby'
+import InRoom from './game/InRoom'
 
 class App extends React.Component {
   constructor(props) {
     super(props)
-
-    this.props.socket.on('connectedUsers', connectedUsers => {
-      this.props.dispatch(updateConnectedUsers(connectedUsers))
-    })
   }
   render() {
+    const {room} = this.props
     return <Router>
       <div className='section has-text-centered'>
         <h1 className="title is-1">Socket Voting</h1>
-        {this.props.room
+        {room
           ? <InRoom />
           : <Lobby />
         }

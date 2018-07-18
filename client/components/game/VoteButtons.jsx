@@ -1,20 +1,24 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import io from 'socket.io-client'
-const socket = io('http://localhost:8000')
 
-import {castVote} from '../actions/votes'
+import {castVote} from '../../actions/votes'
 
 class VoteButtons extends React.Component {
   vote(isYes) {
-    const {votes, room} = this.props
-    const {hasVoted} = votes
-    if (hasVoted) return
-    this.props.dispatch(castVote())
-    this.props.socket.emit('vote', room, isYes)
+    const {
+      votes,
+      room,
+      dispatch,
+      socket
+    } = this.props
+    if (votes.hasVoted) return
+
+    dispatch(castVote())
+    socket.emit('vote', room, isYes)
   }
   reset() {
-    this.props.socket.emit('reset')
+    const {room, socket} = this.props
+    socket.emit('reset', room)
   }
   render() {
     const {hasVoted} = this.props.votes
@@ -26,6 +30,14 @@ class VoteButtons extends React.Component {
   }
 }
 
-const mapStateToProps = ({socket, votes, room}) => ({socket, votes, room})
+const mapStateToProps = ({
+  socket,
+  votes,
+  room
+}) => ({
+  socket,
+  votes,
+  room
+})
 
 export default connect(mapStateToProps)(VoteButtons)

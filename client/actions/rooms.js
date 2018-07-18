@@ -21,7 +21,6 @@ export function receiveRooms(rooms) {
   }
 }
 
-
 export function getRooms () {
   return dispatch => {
     request

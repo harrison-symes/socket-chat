@@ -10,7 +10,9 @@ class ShowRooms extends React.Component {
     return <div>
       <hr />
       <h3 className="title is-3">Rooms</h3>
-      {rooms.map(room => <h1 onClick={() => this.joinRoom(room)}>{room.name}</h1>)}
+      <div className="columns is-multiline">
+        {rooms.map(room => <button className="column is-6 button is-large is-info" onClick={() => this.joinRoom(room)}>{room.name}</button>)}
+      </div>
     </div>
   }
 }

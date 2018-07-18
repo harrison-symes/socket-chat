@@ -1,19 +1,22 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {receiveVote, resetVotes} from '../actions/votes'
+import {
+  receiveVote,
+  resetVotes
+} from '../../actions/votes'
 
 class VoteDisplay extends React.Component {
   constructor(props) {
     super(props)
+    const {socket, dispatch} = this.props
 
-    this.props.socket.on('vote', vote => {
-      console.log({vote});
-      this.props.dispatch(receiveVote(vote))
+    socket.on('vote', vote => {
+      dispatch(receiveVote(vote))
     })
 
-    this.props.socket.on('reset', () => {
-      this.props.dispatch(resetVotes())
+    socket.on('reset', () => {
+      dispatch(resetVotes())
     })
   }
   render() {
@@ -31,7 +34,13 @@ class VoteDisplay extends React.Component {
   }
 }
 
-const mapStateToProps = ({socket, votes}) => ({socket, votes})
+const mapStateToProps = ({
+  socket,
+  votes
+}) => ({
+  socket,
+  votes
+})
 
 
 export default connect(mapStateToProps)(VoteDisplay)
