@@ -13,23 +13,19 @@ module.exports = app => {
 
       socket.on('createRoom', room => {
         console.log("create room", room);
-        socket.join(room, () => console.log(socket._rooms))
-        console.log(socket.rooms)
-        console.log(io.rooms);
+        socket.join(room.id)
         io.emit('addRoom', room)
-        io.to(room).emit('joinRoom', room)
+        io.to(room.id).emit('joinRoom', room)
       })
 
-      socket.on('getRooms', () => {
-        console.log("get rooms");
-        io.emit('receiveRooms', Object.keys(socket.rooms) || [])
+      socket.on('joinRoom', room => {
+        socket.join(room.id)
+        io.to(room.id).emit('joinRoom', room)
       })
 
-      socket.on('vote', function (isYes) {
-        console.log({isYes});
-        console.log(socket.rooms);
-        console.log(io.rooms);
-        io.emit('vote', isYes);
+      socket.on('vote', function (room, isYes) {
+        console.log({room, isYes});
+        io.to(room.id).emit('vote', isYes);
       });
 
       socket.on('reset', function() {

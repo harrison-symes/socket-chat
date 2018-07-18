@@ -8,7 +8,7 @@ class InRoom extends React.Component {
 
   render() {
     return <div>
-      <h3 className="subtitle is-2">Room: {this.props.room}</h3>
+      <h3 className="subtitle is-2">Room: {this.props.room.name}</h3>
       <VoteDisplay />
       <VoteButtons />
     </div>

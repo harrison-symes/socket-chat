@@ -7,10 +7,11 @@ import {castVote} from '../actions/votes'
 
 class VoteButtons extends React.Component {
   vote(isYes) {
-    const {hasVoted} = this.props.votes
+    const {votes, room} = this.props
+    const {hasVoted} = votes
     if (hasVoted) return
     this.props.dispatch(castVote())
-    this.props.socket.emit('vote', isYes)
+    this.props.socket.emit('vote', room, isYes)
   }
   reset() {
     this.props.socket.emit('reset')
@@ -25,6 +26,6 @@ class VoteButtons extends React.Component {
   }
 }
 
-const mapStateToProps = ({socket, votes}) => ({socket, votes})
+const mapStateToProps = ({socket, votes, room}) => ({socket, votes, room})
 
 export default connect(mapStateToProps)(VoteButtons)

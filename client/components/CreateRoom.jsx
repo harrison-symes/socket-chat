@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import {createRoom} from '../actions/rooms'
+
 class CreateRoom extends React.Component {
   constructor(props) {
     super(props)
@@ -13,7 +15,15 @@ class CreateRoom extends React.Component {
   }
   submit(e) {
     e.preventDefault()
-    this.props.socket.emit('createRoom', this.state.room)
+    createRoom(this.state.room)
+      .then(res => {
+        const room = res.body
+        this.props.socket.emit('createRoom', room)
+      })
+    // this.props.dispatch(createRoom(this.state.room, (room) => {
+    //   console.log({room});
+    //   this.props.socket.emit('createRoom', room)
+    // }))
   }
   render() {
     const {room} = this.state

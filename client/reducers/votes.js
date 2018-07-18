@@ -15,6 +15,12 @@ export default function votes(state = initalState, action) {
         ...initalState,
         hasVoted: false
       }
+    case 'JOIN_ROOM':
+      set('hasVoted', false)
+      return {
+        ...initalState,
+        hasVoted: false
+      }
     case 'CAST_VOTE':
       set('hasVoted', true)
       return {

@@ -1,4 +1,4 @@
-
+import request from 'superagent'
 
 export function updateConnectedUsers (connectedUsers) {
   return {

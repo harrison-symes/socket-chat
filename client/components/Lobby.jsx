@@ -3,9 +3,7 @@ import {connect} from 'react-redux'
 
 import CreateRoom from './CreateRoom'
 import ShowRooms from './ShowRooms'
-import {joinRoom, addRoom, receiveRooms} from '../actions/rooms'
-
-
+import {joinRoom, addRoom, receiveRooms, getRooms} from '../actions/rooms'
 
 class Lobby extends React.Component {
   constructor(props) {
@@ -21,13 +19,9 @@ class Lobby extends React.Component {
     this.props.socket.on('addRoom', room => {
       this.props.dispatch(addRoom(room))
     })
-    this.props.socket.on('receiveRooms', rooms => {
-      console.log("got rooms", rooms)
-      this.props.dispatch(receiveRooms(rooms))
-    })
   }
   componentDidMount() {
-    this.props.socket.emit('getRooms')
+    this.props.dispatch(getRooms())
   }
   toggleCreateRoom () {
     this.setState(({createRoomToggle}) => ({createRoomToggle: !createRoomToggle}))

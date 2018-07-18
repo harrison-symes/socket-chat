@@ -10,8 +10,6 @@ server.use(cors('*'))
 server.use(bodyParser.json())
 server.use(express.static(path.join(__dirname, '../public')))
 
-
-
-//server.use('/api/path', require('./path/to/router'))
+server.use('/api/games', require('./routes/games'))
 
 module.exports = server
