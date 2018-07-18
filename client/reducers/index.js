@@ -1,7 +1,13 @@
 import {combineReducers} from 'redux'
 
-// import example from './example'
+import socket from './socket'
+import votes from './votes'
+import gameInfo from './gameInfo'
+import room from './room'
 
 export default combineReducers({
-  // example
+  socket,
+  votes,
+  gameInfo,
+  room
 })

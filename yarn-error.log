@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/bin/yarn
+  /usr/bin/node /usr/bin/yarn add socket.io-client
 
 PATH: 
   /home/symeshjb/bin:/home/symeshjb/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
@@ -79,6 +79,7 @@ npm manifest:
       "redux-thunk": "^2.2.0",
       "sass-loader": "^7.0.1",
       "socket.io": "^2.1.1",
+      "socket.io-client": "^2.1.1",
       "style-loader": "^0.21.0",
       "superagent": "^2.2.0",
       "webpack": "^2.3.3",
@@ -6581,7 +6582,7 @@ Lockfile:
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/socket.io-adapter/-/socket.io-adapter-1.1.1.tgz#2a805e8a14d6372124dd9159ad4502f8cb07f06b"
   
-  socket.io-client@2.1.1:
+  socket.io-client@2.1.1, socket.io-client@^2.1.1:
     version "2.1.1"
     resolved "https://registry.yarnpkg.com/socket.io-client/-/socket.io-client-2.1.1.tgz#dcb38103436ab4578ddb026638ae2f21b623671f"
     dependencies:
