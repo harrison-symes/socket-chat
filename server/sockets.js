@@ -21,6 +21,10 @@ module.exports = app => {
         io.to(room.id).emit('joinRoom', room) //tell client about the joined room
       })
 
+      socket.on('changeRoomName', (room, newName) => {
+        io.emit('roomNameChanged', room, newName)
+      })
+
       socket.on('vote', function (room, isYes) {
         io.to(room.id).emit('vote', isYes)
         //emit a vote to all sockets within the room

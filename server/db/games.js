@@ -13,9 +13,13 @@ module.exports = {
   startGame: (id, testDb) => (testDb || db)('games')
     .where({id})
     .update({is_started: true})
-    .then(() => getGameById(id)),
+    .then(() => getGameById(id[0])),
   endGame: (id, testDb) => (testDb || db)('games')
     .where({id})
     .update({is_ended: true})
+    .then(() => getGameById(id[0])),
+  changeName: (id, name, testDb) => (testDb || db)('games')
+    .where({id})
+    .update({name})
     .then(() => getGameById(id))
 }

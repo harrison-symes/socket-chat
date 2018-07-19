@@ -32,11 +32,11 @@ class Lobby extends React.Component {
     this.setState({showForm: !this.state.showForm})
   }
   render() {
-    const {createRoomToggle} = this.state
+    const {showForm} = this.state
     return <div>
       <h1 className="title">Lobby</h1>
-      {createRoomToggle && <CreateRoom />}
-      <button onClick={this.toggleCreateRoom} className="button is-info">{createRoomToggle ? 'Cancel' : 'Create New Room'}</button>
+      {showForm && <CreateRoom />}
+      <button onClick={this.toggleCreateRoom} className="button is-info">{showForm ? 'Cancel' : 'Create New Room'}</button>
       <ShowRooms />
     </div>
   }

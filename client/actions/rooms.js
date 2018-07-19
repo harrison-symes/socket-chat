@@ -36,3 +36,17 @@ export function createRoom (name) {
     .post('/api/games')
     .send({name})
 }
+
+export function changeRoomName (room, name) {
+  return request
+    .put(`/api/games/${room.id}/name`)
+    .send({name})
+}
+
+export function changeRoomNameAction(room, name) {
+  return {
+    type: 'CHANGE_ROOM_NAME',
+    room,
+    name
+  }
+}

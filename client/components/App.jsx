@@ -5,9 +5,15 @@ import {connect} from 'react-redux'
 import Lobby from './lobby/Lobby'
 import InRoom from './game/InRoom'
 
+import {changeRoomNameAction} from '../actions/rooms'
+
 class App extends React.Component {
   constructor(props) {
     super(props)
+    this.props.socket.on('roomNameChanged', (room, newName) => {
+      console.log({room, newName});
+      this.props.dispatch(changeRoomNameAction(room, newName))
+    })
   }
   render() {
     const {room} = this.props
