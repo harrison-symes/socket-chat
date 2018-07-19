@@ -21,5 +21,10 @@ router.put('/:id/end', (req, res) => {
     .then(game => res.json(game))
 })
 
+router.put('/:id/name', (req, res) => {
+  console.log(req.params.id, req.body);
+  gamesDb.changeName(req.params.id, req.body.name)
+    .then(game => res.json(game))
+})
 
 module.exports = router
