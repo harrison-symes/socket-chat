@@ -1,5 +1,5 @@
 
-module.exports = htpp => {
+module.exports = http => {
   var io = require('socket.io')(http);
 
   io.on('connection', (socket) => {

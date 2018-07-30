@@ -20,7 +20,8 @@ class Register extends React.Component {
     e.preventDefault()
     e.target.reset()
     let {user_name, password, confirm_password} = this.state
-    if (password == confirm_password) this.props.dispatch(registerUserRequest({user_name, password}))
+    if (password == confirm_password)
+    this.props.dispatch(registerUserRequest({user_name, password}))
   }
   render() {
     return (
