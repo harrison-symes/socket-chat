@@ -1,18 +1,14 @@
 {
-  "name": "Bulma-Plates",
+  "name": "Sock-Off",
   "version": "0.1.1",
   "description": "A webpack React starter",
-  "repository": "https://github.com/harrison-symes/Bulma-Plates.git",
+  "repository": "https://github.com/harrison-symes/Sock-Off.git",
   "main": "server/index.js",
   "scripts": {
     "postinstall": "webpack",
     "dev": "nodemon --watch server & webpack --watch",
     "start": "node server/index",
     "test": "jest",
-<<<<<<< HEAD
-    "watch": "nodemon -e js,jsx -x npm test",
-=======
->>>>>>> 73580b27f32bfe1cd610197da26ae58af0747418
     "h:deploy": "git push heroku master",
     "h:migrate": "heroku run knex migrate:latest",
     "h:rollback": "heroku run knex migrate:rollback",
@@ -36,7 +32,12 @@
     "jest": "^21.2.1",
     "nodemon": "^1.11.0",
     "sqlite3": "^3.1.8",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "nock": "^9.2.5",
+    "jest": "^23.4.1",
+    "jsdom": "^11.0.0",
+    "redux-mock-store": "^1.5.1",
+    "react-test-renderer": "^15.5.4"
   },
   "dependencies": {
     "babel-core": "^6.24.1",
@@ -49,48 +50,31 @@
     "body-parser": "^1.15.2",
     "bulma": "^0.7.1",
     "cors": "^2.8.3",
-<<<<<<< HEAD
-    "css-loader": "^0.28.11",
-=======
     "css-loader": "^1.0.0",
     "dotenv": "^4.0.0",
->>>>>>> 73580b27f32bfe1cd610197da26ae58af0747418
     "express": "^4.14.0",
     "express-jwt": "^5.3.0",
     "font-awesome": "^4.7.0",
-    "jest": "^23.4.1",
-    "jsdom": "^11.0.0",
     "jsonwebtoken": "^7.4.3",
     "jsx-loader": "^0.13.2",
     "jwt-decode": "^2.2.0",
     "knex": "^0.13.0",
-<<<<<<< HEAD
-    "nock": "^9.2.5",
-    "node-sass": "^4.9.0",
-=======
     "node-sass": "^4.9.2",
     "passport": "^0.4.0",
->>>>>>> 73580b27f32bfe1cd610197da26ae58af0747418
     "pg": "^6.2.3",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
-    "react-test-renderer": "^15.5.4",
     "redux": "^3.6.0",
-<<<<<<< HEAD
-    "redux-mock-store": "^1.5.1",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^7.0.1",
     "socket.io": "^2.1.1",
     "socket.io-client": "^2.1.1",
-=======
     "redux-thunk": "^2.2.0",
     "sass-loader": "^7.0.3",
->>>>>>> 73580b27f32bfe1cd610197da26ae58af0747418
     "style-loader": "^0.21.0",
     "superagent": "^2.2.0",
     "webpack": "^2.3.3",
-    "webpack-dev-server": "^2.4.2"
   }
 }
