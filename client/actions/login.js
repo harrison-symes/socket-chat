@@ -34,7 +34,7 @@ export const loginUser = (creds, cb) =>
           dispatch(loginError(res.body.message))
           return cb(res.body.message)
         }
-        const userInfo = saveUserToken(response.body.token)
+        const userInfo = saveUserToken(res.body.token)
         dispatch(receiveLogin(userInfo))
         cb()
       })
