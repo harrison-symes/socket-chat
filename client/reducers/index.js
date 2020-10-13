@@ -1,9 +1,10 @@
 import {combineReducers} from 'redux'
-
-import auth from './auth'
-import socket from './socket'
+import username from "./username"
+import people from "./people"
+import chat from "./chat"
 
 export default combineReducers({
-  auth,
-  socket
+    username,
+    people,
+    chat
 })

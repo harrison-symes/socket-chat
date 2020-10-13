@@ -6,7 +6,7 @@ import App from './components/App'
 
 import store from './store'
 
-import './sass/main.scss'
+import './styles/main.css'
 
 document.addEventListener('DOMContentLoaded', () => {
   render(

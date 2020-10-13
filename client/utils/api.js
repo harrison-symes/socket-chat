@@ -1,7 +1,6 @@
 import request from 'superagent'
 
 import { get } from './localstorage'
-import { isAuthenticated } from './auth'
 
 const baseURL = '/api/'
 

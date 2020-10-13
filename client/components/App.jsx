@@ -1,38 +1,29 @@
 import React from 'react'
-import {HashRouter as Router, Route, Link} from 'react-router-dom'
-import {connect} from 'react-redux'
+import {HashRouter as Router, Route} from 'react-router-dom'
+import {getUserName} from "../selectors/username"
+import {useSelector} from "react-redux"
+import Header from './Header'
+import EnterName from "./EnterName"
+import Chat from "./Chat"
+import People from "./People"
 
-import Login from './Login'
-import Register from './Register'
-import Nav from './Nav'
+const App = () => {
+  const username = useSelector(getUserName)
 
-const App = ({auth}) => (
-  <Router>
-    <div className="container has-text-centered">
-
-      <div className="hero is-small is-primary">
-        <div className="hero-body has-text-centered">
-          <Link to='/' className="">
-            <h1 className="title is-1">Sock-Off</h1>
-          </Link>
-          <Nav />
+  return (
+    <Router>
+      <>
+        <Header />
+        <div className="page-container">
+          <People />
+          {username.length === 0 
+            ? <Route path="/" component={EnterName} />
+            : <Route path="/" component={Chat} />
+          }
         </div>
-      </div>
+      </>
+    </Router>
+  )
+}
 
-      <div className=''>
-        {!auth.isAuthenticated &&
-          <React.Fragment>
-            <Route exact path="/" component={Login} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-          </React.Fragment>
-        }
-      </div>
-
-    </div>
-  </Router>
-)
-
-const mapStateToProps = ({auth}) => ({auth})
-
-export default connect(mapStateToProps)(App)
+export default App
