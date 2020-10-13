@@ -15,7 +15,7 @@ const EnterName = () => {
     const submitUsername = (e) => {
         e.preventDefault()
 
-        if(people.includes(username)) {
+        if(people.includes(username) || username.length === 0) {
             return
         }
         

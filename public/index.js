@@ -349,6 +349,7 @@ var Chat = function Chat() {
     className: "chat__inner"
   }, messages.map(function (message) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      key: message,
       className: "chat__message"
     }, message);
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ChatInputs__WEBPACK_IMPORTED_MODULE_1__.default, null));
@@ -481,7 +482,7 @@ var EnterName = function EnterName() {
   var submitUsername = function submitUsername(e) {
     e.preventDefault();
 
-    if (people.includes(username)) {
+    if (people.includes(username) || username.length === 0) {
       return;
     }
 
@@ -594,21 +595,36 @@ var People = function People() {
     dispatch((0,_actions_people__WEBPACK_IMPORTED_MODULE_4__.removePerson)(person));
   };
 
+  var onClickPerson = function onClickPerson(person) {
+    _utils_socket__WEBPACK_IMPORTED_MODULE_1__.default.emit("ping-person", person);
+  };
+
+  var onPinged = function onPinged(fromName) {
+    alert("you got pinged by " + fromName);
+  };
+
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
     _utils_socket__WEBPACK_IMPORTED_MODULE_1__.default.emit("get-people");
     _utils_socket__WEBPACK_IMPORTED_MODULE_1__.default.on("receive-people", onReceivePeople);
     _utils_socket__WEBPACK_IMPORTED_MODULE_1__.default.on("receive-person", onReceivePerson);
     _utils_socket__WEBPACK_IMPORTED_MODULE_1__.default.on("remove-person", onRemovePerson);
+    _utils_socket__WEBPACK_IMPORTED_MODULE_1__.default.on("got-pinged", onPinged);
     return function () {
       _utils_socket__WEBPACK_IMPORTED_MODULE_1__.default.removeEventListener("receive-people", onReceivePeople);
       _utils_socket__WEBPACK_IMPORTED_MODULE_1__.default.removeEventListener("receive-person", onReceivePerson);
       _utils_socket__WEBPACK_IMPORTED_MODULE_1__.default.removeEventListener("remove-person", onRemovePerson);
+      _utils_socket__WEBPACK_IMPORTED_MODULE_1__.default.removeEventListener("remove-person", onRemovePerson);
+      _utils_socket__WEBPACK_IMPORTED_MODULE_1__.default.removeEventListener("got-pinged", onPinged);
     };
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "people-list"
   }, people.map(function (person) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      key: person,
+      onClick: function onClick() {
+        return onClickPerson(person);
+      },
       className: "people-list__card"
     }, person);
   }));

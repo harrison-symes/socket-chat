@@ -25,7 +25,7 @@ const Chat = () => {
         <div className="chat">
             <div className="chat__inner">
                 {messages.map(message => (
-                    <div className="chat__message">{message}</div>
+                    <div key={message} className="chat__message">{message}</div>
                 ))}
             </div>
             <ChatInputs />

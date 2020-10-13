@@ -4,6 +4,10 @@ const connections = {
 
 }
 
+const getSocketIdByName = (name) => {
+  return Object.keys(connections).find(id => connections[id] === name)
+}
+
 module.exports = http => {
   var io = require('socket.io')(http);
 
@@ -35,6 +39,15 @@ module.exports = http => {
         console.log(message)
         const username = connections[socket.id] ?? "unknown user"
         socket.emit("receive-message", `${username}: ${message}`)
+      })
+
+      socket.on("ping-person", (target) => {
+        const targetId = getSocketIdByName(target)
+        console.log("ping", target, targetId)
+        if (targetId === undefined) {
+          return
+        }
+        socket.to(targetId).emit("got-pinged", connections[socket.id])
       })
   });
 
