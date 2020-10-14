@@ -11,11 +11,9 @@ module.exports = http => {
       console.log(`A user connected at ${new Date()}`)
       connections[socket.id] = ""
       console.log(connections)
-      // io.emit('connectedUsers', socket.Server.parser.CONNECT)
       socket.on('disconnect', function () {
         console.log(`A user disconnected at ${new Date()}`);
         const personToRemove = connections[socket.id]
-        console.log("disconnect", personToRemove)
         io.emit("remove-person", personToRemove)
         people = people.filter(person => person !== personToRemove)
         delete connections[socket.id]
@@ -33,7 +31,7 @@ module.exports = http => {
 
       socket.on("send-message", (message) => {
         console.log(message)
-        const username = connections[socket.id] ?? "unknown user"
+        const username = connections[socket.id]
         socket.emit("receive-message", `${username}: ${message}`)
       })
   });
