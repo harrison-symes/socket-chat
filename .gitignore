@@ -8,3 +8,6 @@ yarn.lock
 .env
 coverage
 yarn-error.log
+public/index.js
+public/index.js.map
+public/index.js.LICENSE.txt
