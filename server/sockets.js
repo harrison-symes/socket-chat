@@ -36,8 +36,7 @@ module.exports = http => {
       })
 
       socket.on("send-message", (message) => {
-        console.log(message)
-        const username = connections[socket.id] ?? "unknown user"
+        const username = connections[socket.id]
         io.emit("receive-message", `${username}: ${message}`)
       })
 
