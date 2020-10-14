@@ -1,4 +1,4 @@
-import catsReducer, {initialCats} from '../../client/reducers/cats'
+import catsReducer, { initialCats } from '../../client/reducers/cats'
 
 test('inital state of cats', () => {
   //Arrange

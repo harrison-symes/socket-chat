@@ -1,4 +1,4 @@
-import { RECEIVE_MESSAGE} from "../actions/chat"
+import { RECEIVE_MESSAGE } from "../actions/chat"
 
 const chatReducer = (state = ["This is the first message"], action) => {
     switch(action.type) {

@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux'
 import username from "./username"
 import people from "./people"
 import chat from "./chat"

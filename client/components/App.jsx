@@ -1,7 +1,7 @@
 import React from 'react'
-import {HashRouter as Router, Route} from 'react-router-dom'
-import {getUserName} from "../selectors/username"
-import {useSelector} from "react-redux"
+import { HashRouter as Router, Route } from 'react-router-dom'
+import { getUserName } from "../selectors/username"
+import { useSelector } from "react-redux"
 import Header from './Header'
 import EnterName from "./EnterName"
 import Chat from "./Chat"
