@@ -37,7 +37,12 @@ module.exports = http => {
 
       socket.on("send-message", (message) => {
         const username = connections[socket.id]
-        io.emit("receive-message", `${username}: ${message}`)
+        if (message === "SECRET") {
+          socket.join("secret")
+          socket.to(socket.id).emit("receive-message", "You have joined the secret chat ;)")
+        } else {
+          io.emit("receive-message", `${username}: ${message}`)
+        }
       })
 
       socket.on("ping-person", (target) => {
@@ -49,6 +54,10 @@ module.exports = http => {
         socket.to(targetId).emit("got-pinged", connections[socket.id])
       })
   });
+
+  setInterval(() => {
+    io.to("secret").emit("receive-message", "SECRET ROOM SPAMMMMM. DON'T WEAR SOCKS TO BED YOU SILLIES")
+  }, 500)
 
   return io
 }
