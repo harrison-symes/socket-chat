@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useSelector, useDispatch } from "react-redux"
-import {getUserName} from "../selectors/username"
-import { getPeople} from "../selectors/people"
+import { getUserName } from "../selectors/username"
+import { getPeople } from "../selectors/people"
 import { setUsername } from "../actions/username"
 import socket from "../utils/socket"
 

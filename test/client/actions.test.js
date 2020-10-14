@@ -1,4 +1,4 @@
-import {addCatAction, deleteCatAction} from '../../client/actions/cats'
+import { addCatAction, deleteCatAction } from '../../client/actions/cats'
 
 const fakeCat = {
   name: 'Ming'

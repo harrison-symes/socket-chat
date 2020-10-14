@@ -2,7 +2,7 @@ import * as React from "react"
 import socket from "../utils/socket"
 import { useDispatch, useSelector} from "react-redux" 
 import { receivePeople, receivePerson, removePerson } from "../actions/people"
-import {getPeople} from "../selectors/people"
+import { getPeople } from "../selectors/people"
 
 const People = () => {
     const dispatch = useDispatch()

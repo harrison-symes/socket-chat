@@ -1,4 +1,4 @@
-import {SET_USERNAME} from "../actions/username"
+import { SET_USERNAME } from "../actions/username"
 
 const usernameReducer = (state = "", action) => {
     switch(action.type) {

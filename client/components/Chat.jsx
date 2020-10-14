@@ -2,8 +2,8 @@ import * as React from "react"
 import ChatInputs from "./ChatInputs"
 import { useDispatch, useSelector } from "react-redux"
 import socket from "../utils/socket"
-import { receiveMessage} from "../actions/chat"
-import { getMessages} from "../selectors/chat"
+import { receiveMessage } from "../actions/chat"
+import { getMessages } from "../selectors/chat"
 
 const Chat = () => {
     const messages = useSelector(getMessages)

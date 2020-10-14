@@ -4,7 +4,7 @@ import { shallow, mount } from 'enzyme'
 import Greetings from '../../client/components/Greetings'
 import './setup-dom'
 
-import {Provider} from 'react-redux'
+import { Provider } from 'react-redux'
 
 import configureStore from  'redux-mock-store'
 
